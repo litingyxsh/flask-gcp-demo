@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Credit Risk Prediction</title>
+</head>
+<body>
+    <h2>Enter Loan Application Info</h2>
+    <form action="/predict" method="post">
+        Age: <input type="number" step="any" name="person_age"><br><br>
+        Income: <input type="number" step="any" name="person_income"><br><br>
+        Employment Length: <input type="number" step="any" name="person_emp_length"><br><br>
+        Loan Amount: <input type="number" step="any" name="loan_amnt"><br><br>
+        Interest Rate: <input type="number" step="any" name="loan_int_rate"><br><br>
+        Percent Income: <input type="number" step="any" name="loan_percent_income"><br><br>
+        Credit History Length: <input type="number" step="any" name="cb_person_cred_hist_length"><br><br>
+
+        <!-- One-hot: person_home_ownership -->
+        Home Ownership (MORTGAGE): <input type="number" name="person_home_ownership_MORTGAGE"><br><br>
+        Home Ownership (OTHER): <input type="number" name="person_home_ownership_OTHER"><br><br>
+        Home Ownership (OWN): <input type="number" name="person_home_ownership_OWN"><br><br>
+        Home Ownership (RENT): <input type="number" name="person_home_ownership_RENT"><br><br>
+
+        <!-- One-hot: loan_intent -->
+        Intent (DEBTCONSOLIDATION): <input type="number" name="loan_intent_DEBTCONSOLIDATION"><br><br>
+        Intent (EDUCATION): <input type="number" name="loan_intent_EDUCATION"><br><br>
+        Intent (HOMEIMPROVEMENT): <input type="number" name="loan_intent_HOMEIMPROVEMENT"><br><br>
+        Intent (MEDICAL): <input type="number" name="loan_intent_MEDICAL"><br><br>
+        Intent (PERSONAL): <input type="number" name="loan_intent_PERSONAL"><br><br>
+        Intent (VENTURE): <input type="number" name="loan_intent_VENTURE"><br><br>
+
+        Loan Grade (1-7): <input type="number" name="loan_grade_enc"><br><br>
+        CB Default (0 or 1): <input type="number" name="cb_person_default_on_file_enc"><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction_text %}
+        <h3>{{ prediction_text }}</h3>
+    {% endif %}
+</body>
+</html>
